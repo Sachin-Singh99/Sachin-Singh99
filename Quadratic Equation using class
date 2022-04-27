@@ -1,0 +1,62 @@
+//Quadratic equation using class in c ++
+       /*SHARE & SUPPORT*/
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+class eqn{
+    float a,b,c;
+    public:
+    void getinfo(float x,float y,float z){
+        a=x;
+        b=y;
+        c=z;
+    }
+    void display(){
+        cout<<endl;
+        cout<<" a = "<<a<<'\t';
+        cout<<" b = "<<b<<'\t';
+        cout<<" c = "<<c<<endl;
+    }
+    void equal(float a, float b){
+        float n;
+        n=-b/(2*a);
+        cout<<"Roots are equal = "<<n<<endl;
+    }
+    void imag(){
+        cout<<"Roots are imaginary\n";
+    }
+    void real(float a, float b,float det){
+        float x1,x2,temp;
+        temp=sqrt(det);
+        x1=(-b+temp)/(2*a);
+        x2=(-b-temp)/(2*a);
+        cout<<"Roots are real\n";
+        cout<<"x1 = "<<x1<<endl;
+        cout<<"x2 = "<<x2<<endl;
+    }
+};
+
+int main(){
+   class eqn eq;
+   float x,y,z;
+   cout<<"Enter any three number \n";
+   cin>>x>>y>>z;
+   eq.getinfo(x,y,z);
+   eq.display();
+   if(x==0){
+       float temp;
+       temp=z/y;
+       cout<<"Linear roots = "<<temp<<endl;
+   }
+   else{
+       float det;
+       det=y*y-4*x*z;
+       if(det == 0)
+            eq.equal(x,y);
+       else if(det<0)
+            eq.imag();
+       else
+            eq.real(x,y,det);
+   }
+}
